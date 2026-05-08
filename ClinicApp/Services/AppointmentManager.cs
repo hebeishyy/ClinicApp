@@ -15,7 +15,7 @@ namespace ClinicApp.Services
             if (IsTimeTaken(appointment.Time))
             {
                 Console.WriteLine("Time slot is already taken.");
-                return;
+                return; 
             }
             appointments.Add(appointment);
         }
