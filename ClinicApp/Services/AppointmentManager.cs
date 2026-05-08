@@ -12,6 +12,11 @@ namespace ClinicApp.Services
         private List<Appointment> appointments = new List<Appointment>();
         public void AddAppointment(Appointment appointment)
         {
+            if (IsTimeTaken(appointment.Time))
+            {
+                Console.WriteLine("Time slot is already taken.");
+                return;
+            }
             appointments.Add(appointment);
         }
         public void ViewAppointments()
@@ -25,6 +30,11 @@ namespace ClinicApp.Services
                 Console.WriteLine(appointment.Time);
 
             }
+        }
+        public bool IsTimeTaken(DateTime time)
+        {
+            return appointments.Any(a =>
+                a.Time == time && !a.IsCancelled);
         }
 
     }

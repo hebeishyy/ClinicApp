@@ -17,6 +17,7 @@ namespace ClinicApp
                 Console.WriteLine("3. Exit.");
 
                 Console.Write("Choose an option: ");
+
                 string choice = Console.ReadLine();
 
                 if (choice == "1")
@@ -44,23 +45,55 @@ namespace ClinicApp
             Console.Write("Patient name: ");
             string name = Console.ReadLine();
 
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("Patient name cannot be empty.");
+                return;
+            }
+
             Console.Write("Patient phone: ");
             string phone = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(phone))
+            {
+                Console.WriteLine("Patient phone cannot be empty.");
+                return;
+            }
 
             Console.Write("Service: ");
             string service = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(service))
+            {
+                Console.WriteLine("Service cannot be empty.");
+                return;
+            }
 
             Console.Write("Year: ");
-            int year = int.Parse(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out int year))
+            {
+                Console.WriteLine("Invalid input for year.");
+                return;
+            }
 
             Console.Write("Month: ");
-            int month = int.Parse(Console.ReadLine());
+           if (!int.TryParse(Console.ReadLine(), out int month))
+            {
+                Console.WriteLine("Invalid input for month.");
+                return;
+            }
 
             Console.Write("Day: ");
-            int day = int.Parse(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out int day))
+            {
+                Console.WriteLine("Invalid input for day.");
+                return;
+            }
 
             Console.Write("Hour: ");
-            int hour = int.Parse(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out int hour))
+            {
+                Console.WriteLine("Invalid input for hour");
+                return;
+            }
 
             Patient patient = new Patient
             {
