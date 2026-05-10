@@ -17,6 +17,7 @@ namespace ClinicApp
                 Console.WriteLine("3. Exit.");
 
                 Console.Write("Choose an option: ");
+
                 string choice = Console.ReadLine();
 
                 if (choice == "1")
@@ -52,9 +53,61 @@ namespace ClinicApp
             
             int month = ReadInt("Month: ");
 
+<<<<<<< HEAD
             int day = ReadInt("Day: ");
             
             int hour = ReadInt("Hour: ");
+=======
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("Patient name cannot be empty.");
+                return;
+            }
+
+            Console.Write("Patient phone: ");
+            string phone = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(phone))
+            {
+                Console.WriteLine("Patient phone cannot be empty.");
+                return;
+            }
+
+            Console.Write("Service: ");
+            string service = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(service))
+            {
+                Console.WriteLine("Service cannot be empty.");
+                return;
+            }
+
+            Console.Write("Year: ");
+            if (!int.TryParse(Console.ReadLine(), out int year))
+            {
+                Console.WriteLine("Invalid input for year.");
+                return;
+            }
+
+            Console.Write("Month: ");
+           if (!int.TryParse(Console.ReadLine(), out int month))
+            {
+                Console.WriteLine("Invalid input for month.");
+                return;
+            }
+
+            Console.Write("Day: ");
+            if (!int.TryParse(Console.ReadLine(), out int day))
+            {
+                Console.WriteLine("Invalid input for day.");
+                return;
+            }
+
+            Console.Write("Hour: ");
+            if (!int.TryParse(Console.ReadLine(), out int hour))
+            {
+                Console.WriteLine("Invalid input for hour");
+                return;
+            }
+>>>>>>> 4ec57509cb9cea6074a9f446b7c8ed1d6bb3b2b4
 
             Patient patient = new Patient
             {
