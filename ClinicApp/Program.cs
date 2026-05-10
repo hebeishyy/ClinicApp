@@ -41,26 +41,20 @@ namespace ClinicApp
         }
         static void AddAppointmentFlow(AppointmentManager manager)
         {
-            Console.Write("Patient name: ");
-            string name = Console.ReadLine();
+            
+            string name = ReadRequiredString("Patient name: ");
+            
+            string phone = ReadRequiredString("Phone: ");
+            
+            string service = ReadRequiredString("Service: ");
+            
+            int year = ReadInt("Year: ");
+            
+            int month = ReadInt("Month: ");
 
-            Console.Write("Patient phone: ");
-            string phone = Console.ReadLine();
-
-            Console.Write("Service: ");
-            string service = Console.ReadLine();
-
-            Console.Write("Year: ");
-            int year = int.Parse(Console.ReadLine());
-
-            Console.Write("Month: ");
-            int month = int.Parse(Console.ReadLine());
-
-            Console.Write("Day: ");
-            int day = int.Parse(Console.ReadLine());
-
-            Console.Write("Hour: ");
-            int hour = int.Parse(Console.ReadLine());
+            int day = ReadInt("Day: ");
+            
+            int hour = ReadInt("Hour: ");
 
             Patient patient = new Patient
             {
@@ -77,6 +71,38 @@ namespace ClinicApp
             };
             manager.AddAppointment(appointment);
             Console.WriteLine("Appointment aded successfully.");
+        }
+        static string ReadRequiredString(string message)
+        {
+            while (true)
+            {
+                Console.Write(message);
+                string input = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(input))
+                {
+                    return input;
+                }
+                else
+                {
+                    Console.WriteLine("Input cannot be empty.");
+                }
+            }
+        }
+        static int ReadInt(string message)
+        {
+            while (true)
+            {
+                Console.Write(message);
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int result))
+                {
+                    return result;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid number. Try again.");
+                }
+            }
         }
     }
 }
